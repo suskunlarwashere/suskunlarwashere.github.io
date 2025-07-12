@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Destekçiler</title>
+  <style>
+    :root {
+      --primary-color: #072417;
+      --secondary-color: #1c5b3f;
+      --accent-color: #166844;
+      --light-bg: #f5f5f5;
+      --gold-gradient: linear-gradient(135deg, #FFD700, #D4AF37, #FFD700);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, var(--light-bg), #e6f0ea);
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--primary-color);
+      font-size: 42px;
+      letter-spacing: 1px;
+      margin-bottom: 40px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 3px;
+      background: var(--gold-gradient);
+      border-radius: 3px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      margin: 50px 0 25px;
+      color: var(--secondary-color);
+      border-bottom: 2px solid var(--secondary-color);
+      display: inline-block;
+      padding-bottom: 8px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .supporters-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+    }
+
+    .supporter {
+      background-color: white;
+      border-radius: 16px;
+      padding: 25px;
+      flex: 1 1 calc(20% - 40px);
+      max-width: 220px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      user-select: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .supporter:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(28, 91, 63, 0.2);
+    }
+
+    /* PREMIUM DESTEKÇİ STİLLERİ */
+    .supporter.elite {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      color: var(--primary-color);
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+
+    .supporter.elite::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold-gradient);
+      opacity: 0.15;
+      z-index: -1;
+      border-radius: 16px;
+    }
+
+    .supporter.elite::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -150%;
+      width: 300%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+      animation: shine 3.5s infinite ease-in-out;
+      pointer-events: none;
+      border-radius: 16px;
+      z-index: -1;
+    }
+
+    @keyframes shine {
+      0% { left: -150%; }
+      50% { left: 150%; }
+      100% { left: 150%; }
+    }
+
+    .supporter-name {
+      font-weight: bold;
+      color: var(--primary-color);
+      font-size: 22px;
+      margin: 15px 0 8px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .elite .supporter-name {
+      color: #5a4a00;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+    }
+
+    .supporter-title {
+      color: var(--accent-color);
+      font-size: 16px;
+      margin-bottom: 15px;
+      font-style: italic;
+      position: relative;
+      z-index: 2;
+    }
+
+    .elite .supporter-title {
+      color: #8a7500;
+      font-weight: 500;
+    }
+
+    .logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 32px;
+      color: white;
+      position: relative;
+      z-index: 2;
+      user-select: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .supporter:hover .logo {
+      transform: scale(1.1);
+    }
+
+    .elite .logo {
+      background: var(--gold-gradient);
+      color: white;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+      border: 3px solid white;
+    }
+
+    .regular .logo {
+      background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+      box-shadow: 0 0 20px rgba(28, 91, 63, 0.4);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: #fff;
+      margin: 8% auto;
+      padding: 35px;
+      width: 90%;
+      max-width: 550px;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      position: relative;
+      user-select: text;
+      animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 32px;
+      cursor: pointer;
+      color: #aaa;
+      user-select: none;
+      transition: all 0.2s;
+      font-weight: 300;
+    }
+
+    .close:hover {
+      color: var(--secondary-color);
+      transform: rotate(90deg);
+    }
+
+    .modal-title {
+      color: var(--primary-color);
+      font-size: 28px;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .modal-subtitle {
+      color: #666;
+      font-style: italic;
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    #modalText {
+      white-space: pre-wrap;
+      line-height: 1.7;
+      font-size: 16px;
+      color: #444;
+      margin-bottom: 25px;
+    }
+
+    /* İletişim bilgileri */
+    .contact-info {
+      margin-top: 25px;
+      background: rgba(28, 91, 63, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .contact-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-icon {
+      margin-right: 12px;
+      font-size: 24px;
+      color: var(--secondary-color);
+      min-width: 30px;
+      text-align: center;
+    }
+
+    .contact-value {
+      color: #333;
+      word-break: break-all;
+    }
+
+    .contact-link {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+
+    .contact-link:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .supporter {
+        flex: 1 1 calc(33% - 30px);
+      }
+    }
+    @media (max-width: 700px) {
+      .supporter {
+        flex: 1 1 calc(50% - 30px);
+      }
+    }
+    @media (max-width: 500px) {
+      .supporter {
+        flex: 1 1 100%;
+        max-width: 300px;
+      }
+      
+      .modal-content {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Topluluğumuz</h1>
+
+    <div class="section-title">Destekçiler</div>
+    <div class="supporters-container">
+      <div class="supporter elite" 
+           data-name="Nihat Aktaş" 
+           data-title="En Döner " 
+           data-description="Muğla'da 20 yıldır Es Döner'in sahibi. Aslen Konyalı. Lezzetiyle adını duyurmuş, samimiyetiyle gönülleri kazanmıştır. Dönerleriyle bölgede efsane olmuş, kaliteli malzeme ve özenli hazırlık süreciyle fark yaratmıştır." 
+           data-instagram="endonermugla" 
+           data-phone=" 𝑀𝑒𝑟𝑘𝑒𝑧 𝑠̧𝑢𝑏𝑒 | 𝟶 (𝟸𝟻𝟸) 𝟸𝟷𝟹 𝟷𝟺𝟷𝟻,𝐾ö𝑡𝑒𝑘𝑙𝑖 𝑠̧𝑢𝑏𝑒 | 𝟶 (𝟸𝟻𝟸) 502 0102">
+        <div class="logo">NA</div>
+        <div class="supporter-name">Nihat Aktaş</div>
+        <div class="supporter-title">En Döner </div>
+      </div>
+
+      <div class="supporter elite" 
+           data-name="Serdar İli" 
+           data-title="Elit İnşaat" 
+           data-description="1980 yılında doğan elit inşaat sahibi Serdar İli aslen Bayburtlu olmasına rağmen yıllarca kendini Yeşil beyaza adamış ve grubumuza ciddi maddi ve manevi destek sağlamıştır. Lüks konut projeleriyle sektörde saygın bir yer edinmiştir." 
+           data-instagram="elitinsaatmugla" 
+           data-phone="05514096545">
+        <div class="logo">Sİ</div>
+        <div class="supporter-name">Serdar İli</div>
+        <div class="supporter-title">Elit İnşaat </div>
+      </div>
+    </div>
+
+    <div class="section-title">Çekirdek Kadro</div>
+    <div class="supporters-container" id="core-container">
+      <!-- Çekirdek Kadro tıklanmaz, boş bırakılıyor -->
+    </div>
+  </div>
+
+  <div id="myModal" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalText">
+      <span class="close" role="button" aria-label="Kapat" tabindex="0">&times;</span>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <h3 class="modal-subtitle" id="modalSubtitle"></h3>
+      <p id="modalText"><strong>🗨 Açıklama:</strong></p>
+      <div class="contact-info" id="contactInfo"></div>
+    </div>
+  </div>
+
+  <script>
+    // Kurucu üyeler
+    const founders = ["Osman Özcan", "Emin Yaşyer", "Ferhat Çakmak", "Serkan Kurt", "Ali Uzun", "Nuri Gültekin", "Arda Sünnetçi "];
+    
+    // Emekçiler
+    const workers = ["Ali Serdar Kocaağa", "Talha Çetin", "Emirhan Kıbrıslı", "Birol Samur", "Ramazan Yetim", "Şadi Çetin", "Yiğit Haney", "Melih Akyol", "İlker Sakallı", "İbrahim Uzun "];
+    
+    const coreContainer = document.getElementById('core-container');
+
+    // Kurucu üyeleri ekle
+    founders.forEach(name => {
+      const div = document.createElement('div');
+      div.className = 'supporter regular';
+      div.innerHTML = `
+        <div class="logo">${name[0]}</div>
+        <div class="supporter-name">${name}</div>
+        <div class="supporter-title">Kurucu Üye</div>
+      `;
+      coreContainer.appendChild(div);
+    });
+
+    // Emekçileri ekle
+    workers.forEach(name => {
+      const div = document.createElement('div');
+      div.className = 'supporter regular';
+      div.innerHTML = `
+        <div class="logo">${name[0]}</div>
+        <div class="supporter-name">${name}</div>
+        <div class="supporter-title">Emekçi</div>
+      `;
+      coreContainer.appendChild(div);
+    });
+
+    function showModal(el) {
+      // Sadece elite destekçiler için modal aç
+      if (!el.classList.contains('elite')) return;
+
+      const modal = document.getElementById('myModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalSubtitle = document.getElementById('modalSubtitle');
+      const modalText = document.getElementById('modalText');
+      const contactInfo = document.getElementById('contactInfo');
+
+      modalTitle.textContent = el.dataset.name;
+      modalSubtitle.textContent = el.dataset.title;
+      
+      // Açıklama yazma efekti
+      modalText.innerHTML = '<strong>🗨 Açıklama:</strong><br><span></span>';
+      const span = modalText.querySelector('span');
+      let i = 0;
+      const desc = el.dataset.description || '';
+      
+      // Önceki animasyonu temizle
+      clearInterval(span.interval);
+      
+      span.interval = setInterval(() => {
+        span.textContent += desc.charAt(i++);
+        if (i >= desc.length) clearInterval(span.interval);
+      }, 20);
+
+      // İletişim bilgilerini oluştur
+      contactInfo.innerHTML = '';
+      
+      // Instagram
+      if(el.dataset.instagram){
+        contactInfo.innerHTML += `
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+            <div class="contact-value">
+              <a href="https://instagram.com/${el.dataset.instagram}" target="_blank" class="contact-link">@${el.dataset.instagram}</a>
+            </div>
+          </div>
+        `;
+      }
+      
+      // Telefon numaraları
+      if(el.dataset.phone){
+        const phones = el.dataset.phone.split(',');
+        phones.forEach(phone => {
+          contactInfo.innerHTML += `
+            <div class="contact-item">
+              <div class="contact-icon"><i class="fas fa-phone"></i></div>
+              <div class="contact-value">
+                <a href="tel:${phone.replace(/\s/g, '')}" class="contact-link">${phone}</a>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden'; // Sayfa kaymasını engelle
+    }
+
+    // Elite destekçilere modal açma
+    document.querySelectorAll('.supporter.elite').forEach(el => {
+      el.addEventListener('click', () => showModal(el));
+    });
+
+    // Modal kapatma
+    document.querySelector('.close').addEventListener('click', () => {
+      document.getElementById('myModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    window.addEventListener('click', e => {
+      const modal = document.getElementById('myModal');
+      if(e.target === modal){
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // ESC ile kapatma
+    window.addEventListener('keydown', e => {
+      if(e.key === 'Escape'){
+        document.getElementById('myModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
+</body>
+</html>

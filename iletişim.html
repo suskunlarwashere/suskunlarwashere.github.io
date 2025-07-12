@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>İletişim - X Taraftarlar</title>
+  <style>
+    :root {
+      --primary-color: #005a34;
+      --accent-color: #d4af37;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8f8f8;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contact-box {
+      background: white;
+      width: 100%;
+      max-width: 500px;
+      padding: 3rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 90, 52, 0.1);
+      border-radius: 10px;
+      border-top: 5px solid var(--accent-color);
+    }
+
+    h1 {
+      color: var(--primary-color);
+      margin-bottom: 2.5rem;
+      font-size: 2.2rem;
+      position: relative;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: var(--accent-color);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin: 0 auto;
+      max-width: 300px;
+    }
+
+    .contact-item {
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      align-items: center;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto;
+    }
+
+    .contact-text strong {
+      display: block;
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-text a {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .contact-text a:hover {
+      color: var(--accent-color);
+    }
+
+    .slogan {
+      margin-top: 3rem;
+      font-style: italic;
+      color: var(--primary-color);
+      font-size: 1.1rem;
+      position: relative;
+      padding-top: 1rem;
+    }
+
+    .slogan::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 2px;
+      background: var(--accent-color);
+    }
+
+    @media (max-width: 600px) {
+      .contact-box {
+        padding: 2rem;
+        margin: 1rem;
+      }
+      
+      .contact-item {
+        grid-template-columns: 40px 1fr;
+        gap: 0.8rem;
+      }
+      
+      .icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="contact-box">
+    <h1>İletişim</h1>
+    
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="contact-text">
+          <strong>E-Posta</strong>
+          <a href="mailto:suskunlarmugaresmi@gmail.com">suskunlarmugaresmi@gmail.com</a>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="icon">
+          <i class="fab fa-instagram"></i>
+        </div>
+        <div class="contact-text">
+          <strong>Instagram</strong>
+          <a href="https://instagram.com/suskunlarmugla" target="_blank">suskunlar</a>
+        </div>
+      </div>
+    </div>
+    
+    <p class="slogan">Sporun asaletini ve Muğla'nın ihtişamını tribünlere taşıyoruz!</p>
+  </div>
+
+</body>
+</html>

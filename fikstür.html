@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Suskunlar - Fikstür</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg-light: #f9f8f4;
+    --text-dark: #2b3a2b;
+    --primary: #557a55;
+    --primary-hover: #8aae88;
+    --accent: #c9d6c9;
+    --shadow: rgba(85, 122, 85, 0.3);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    margin: 0; 
+    padding: 3rem 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background 0.4s ease, color 0.4s ease;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 3.2rem;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    letter-spacing: 0.06em;
+    text-shadow: 0 2px 4px var(--shadow);
+  }
+
+  .container {
+    width: 100%;
+    max-width: 960px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px var(--shadow);
+    padding: 2rem 2.5rem;
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1.1rem;
+    font-weight: 500;
+  }
+
+  thead th {
+    color: var(--primary);
+    font-weight: 700;
+    padding-bottom: 1rem;
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--primary);
+    text-align: left;
+    letter-spacing: 0.05em;
+  }
+
+  tbody tr {
+    background: var(--accent);
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(85, 122, 85, 0.15);
+    transition: background 0.3s ease, transform 0.25s ease;
+    cursor: default;
+  }
+
+  tbody tr:hover {
+    background: var(--primary-hover);
+    color: #d7e2d7;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(85, 122, 85, 0.3);
+  }
+
+  tbody tr:hover td {
+    color: #d7e2d7;
+  }
+
+  tbody td {
+    padding: 15px 25px;
+    border-radius: 14px;
+    transition: color 0.3s ease;
+  }
+
+  tbody td:first-child {
+    font-weight: 600;
+    font-size: 1rem;
+    width: 110px;
+  }
+
+  tbody td:nth-child(2) {
+    font-style: italic;
+    color: var(--primary);
+    font-weight: 600;
+    width: 180px;
+  }
+
+  tbody td:nth-child(3),
+  tbody td:nth-child(4) {
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem 1.5rem;
+    }
+
+    table, thead, tbody, th, td, tr {
+      display: block;
+      width: 100%;
+    }
+
+    thead tr {
+      display: none;
+    }
+
+    tbody tr {
+      margin-bottom: 1.8rem;
+      padding: 1.2rem 1rem;
+      border-radius: 20px;
+      box-shadow: 0 5px 18px rgba(85, 122, 85, 0.2);
+      background: var(--accent);
+      color: var(--text-dark);
+      transform: none !important;
+      cursor: default;
+      transition: none !important;
+    }
+
+    tbody tr:hover {
+      background: var(--accent);
+      color: var(--text-dark);
+      transform: none !important;
+      box-shadow: 0 5px 18px rgba(85, 122, 85, 0.2);
+      cursor: default;
+    }
+
+    tbody td {
+      padding: 12px 0;
+      position: relative;
+      padding-left: 120px;
+      text-align: left;
+      border-bottom: 1px solid var(--primary-hover);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-dark);
+    }
+
+    tbody td:last-child {
+      border-bottom: none;
+    }
+
+    tbody td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+  <h1>Fikstürümüz</h1>
+
+  <div class="container" role="region" aria-label="Fikstür tablosu">
+    <table>
+      <thead>
+        <tr>
+          <th>Tarih</th>
+          <th>Lig</th>
+          <th>Ev Sahibi</th>
+          <th>Misafir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td data-label="Tarih">31.08.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Sincan Bld Ankaraspor</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">07.09.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Beykoz A.Ş.</td></tr>
+        <tr><td data-label="Tarih">14.09.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Bucaspor 1928</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">21.09.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Kepezspor A.Ş</td></tr>
+        <tr><td data-label="Tarih">28.09.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">İnegölspor</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">05.10.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Erbaaspor</td></tr>
+        <tr><td data-label="Tarih">12.10.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">İskenderunspor</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">19.10.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">24 Erzincanspor</td></tr>
+        <tr><td data-label="Tarih">26.10.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Adana 01 FK</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">02.11.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Elazığspor</td></tr>
+        <tr><td data-label="Tarih">08.11.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Ankaragücü</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">12.11.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Beyoğlu Y.Çarşı</td></tr>
+        <tr><td data-label="Tarih">16.11.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Altınordu</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">23.11.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Batman Petrolspor</td></tr>
+        <tr><td data-label="Tarih">30.11.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Karacabey Bld</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">07.12.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Karaman FK</td></tr>
+        <tr><td data-label="Tarih">14.12.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Şanlıurfaspor</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">21.12.2025</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Kastamonuspor</td></tr>
+        <tr><td data-label="Tarih">18.01.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Sincan Bld Ankaraspor</td></tr>
+        <tr><td data-label="Tarih">24.01.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Beykoz A.Ş.</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">28.01.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Bucaspor 1928</td></tr>
+        <tr><td data-label="Tarih">01.02.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Kepezspor A.Ş</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">08.02.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">İnegölspor</td></tr>
+        <tr><td data-label="Tarih">15.02.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Erbaaspor</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">22.02.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">İskenderunspor</td></tr>
+        <tr><td data-label="Tarih">01.03.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">24 Erzincanspor</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">07.03.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Adana 01 FK</td></tr>
+        <tr><td data-label="Tarih">11.03.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Elazığspor</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">15.03.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Ankaragücü</td></tr>
+        <tr><td data-label="Tarih">25.03.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Beyoğlu Y.Çarşı</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">29.03.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Altınordu</td></tr>
+        <tr><td data-label="Tarih">04.04.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Batman Petrolspor</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">08.04.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Karacabey Bld</td></tr>
+        <tr><td data-label="Tarih">12.04.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Karaman FK</td><td data-label="Misafir">Muğlaspor</td></tr>
+        <tr><td data-label="Tarih">19.04.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Muğlaspor</td><td data-label="Misafir">Şanlıurfaspor</td></tr>
+        <tr><td data-label="Tarih">25.04.2026</td><td data-label="Lig">Türkiye Nesine 2. Lig</td><td data-label="Ev Sahibi">Kastamonuspor</td><td data-label="Misafir">Muğlaspor</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
